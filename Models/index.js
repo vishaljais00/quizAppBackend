@@ -34,6 +34,7 @@ db.quizOption = require("./quizOptionModel.js")(sequelize, DataTypes);
 db.userQuizMasterModel = require("./userQuizMasterModel.js")(sequelize, DataTypes);
 db.attendiModel = require("./attendiModel.js")(sequelize, DataTypes);
 db.userQuizDetail = require("./userQuizDetailModel.js")(sequelize, DataTypes);
+db.email = require("./emailModel.js")(sequelize, DataTypes);
 
 
 
@@ -52,6 +53,7 @@ db.quizOption.belongsTo(db.quizQuestion, {as: "quiz_question",foreignKey: 'quiz_
 
 db.quizMaster.hasMany(db.userQuizMasterModel, {as: "user_quiz_list", foreignKey: 'quiz_master_id'})
 db.users.hasMany(db.userQuizMasterModel, {as: "user_list", foreignKey: 'user_id'})
+
 db.userQuizMasterModel.belongsTo(db.quizMaster, {as: "quiz_master_detail",foreignKey: 'quiz_master_id'})
 db.userQuizMasterModel.belongsTo(db.users, {as: "quiz_user_detail",foreignKey: 'user_id'})
 

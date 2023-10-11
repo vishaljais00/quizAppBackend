@@ -7,6 +7,7 @@ const userRoute = require('./routes/userRoutes');
 const quizMasterRoutes = require('./routes/quizMasterRoutes');
 const userQuizMasterRoutes = require('./routes/userQuizMasterRoutes');
 const userAttendRoutes = require('./routes/userAttendRoutes');
+const emailRoutes = require('./routes/emailRoutes');
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
 
@@ -51,7 +52,7 @@ const server = http.createServer(app);
 const io = socketIO(server, {
   cors: {
     origin: ["http://localhost:3000", "http://campaigns.cybermatrixsolutions.com", "http://campaigns.cybermatrixsolutions.com/", "http://localhost:3000/"],
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST", "PUT", "DELETE"]
   }
 });
 
@@ -82,7 +83,7 @@ app.use('/api/user',userRoute);
 app.use('/api/quiz',quizMasterRoutes);
 app.use('/api/userquiz',userQuizMasterRoutes);
 app.use('/api/attend',userAttendRoutes);
-
+app.use('/api/email', emailRoutes);
 
 
 
